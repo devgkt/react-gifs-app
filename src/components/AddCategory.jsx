@@ -1,42 +1,40 @@
 import { useState } from "react"
 
 
-//Recibe la funcion onNewCategory() en las props y ahi le pasa el valor del input
+//Received the onNewCategory() function in props and there passes the input value(the new category)
 export const AddCategory = ( { onNewCategory /*setCategories*/} ) => {
     
     
     const [inputValue, setInputValue] = useState('');
 
-    //desestructurar props al teclear
+    //destructuring props when pressing keyboard
     const onInputChange = ({target}) => {
         setInputValue(target.value);
     }
 
     
     const onSubmitForm = (event) => {
-        event.preventDefault();//prevenir el refreh del browser
+        event.preventDefault();//prevent browser refresh on submit form
         const cleanedInput  = inputValue.trim();
-        if(cleanedInput.length < 1) return;//no permitir vacio
+        if(cleanedInput.length < 1) return;
         
         /*
-        en esta version recibe la funcion setCategories() en las props
-        y el añadido del item en la lista esta dentro del componente
-        al usar form se envia la info y se refresaca la pagina
-        no desestructuramos como en el evento onChange
-        toma la lista actual y le añade el nuevo valor
+        In this version, the setCategories() function is received in the props and the process of adding the item to the list is within
+        the child component. When using form, the information is sent and the page is refreshed. 
+        We do not destructure as in the onChange event, it takes the current list and adds the new value.
         */
         //setCategories ((categories) => [inputValue, ...categories]);
 
 
 
         /*
-          En esta vrsion recibe la funcion onNewCategory en las props, y le pasa el input value 
-          para que sea el padre quien procese la categoria
+          In this version, the child receives the onNewCategory function in the props, and passes the input value so that the parent
+           is the one who processes the category.
         */
         console.log(" value on Add category component "+cleanedInput);
         onNewCategory(cleanedInput);
 
-        setInputValue('');//limpiar input despues de procesar la lista(estado)
+        setInputValue('');//Clean input after processing the list(state)
     }
 
   return (
@@ -45,7 +43,7 @@ export const AddCategory = ( { onNewCategory /*setCategories*/} ) => {
         <input
         text = ""
         placeholder = "Search gifs"
-        value = {inputValue} //el valor en el input
+        value = {inputValue} //value on input
         //onChange = { (event) => onInputChange(event)} //one option
         onChange = { onInputChange }
         />

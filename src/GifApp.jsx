@@ -7,11 +7,11 @@ export const GifApp = () => {
 
     const [categories, setCategories] = useState(['Dragon Ball Z']);
 
-    const addNewCategory = (newCategory) => {//recibe el newCategory del hijo (del AddCategory component)
+    const addNewCategory = (newCategory) => {//Receives the 'newCategory' from Child (AddCategory component)
         console.log(" value on GifApp component "+newCategory);
-        if(categories.includes(newCategory)) return; //no permitir duplicados
+        if(categories.includes(newCategory)) return; //handle duplicated
         
-        setCategories([newCategory, ...categories ]);//añade al arreglo categories al principio de la lista
+        setCategories([newCategory, ...categories ]);//Adds the new category at the beginning of the list
     }
 
     return (
@@ -19,13 +19,13 @@ export const GifApp = () => {
         <h1>Gif Application</h1>
         <AddCategory 
             /*
-            esta version requiere que el hijo procese la nueva categoria, asi que 
-            //le pasa la funcion setCategories()
+            This version required the vhild to process the new Category, so it sends the setCategories() funtion to the child as prop
             //setCategories = {setCategories} */
 
             /*
-            Esta version se define este nueva funcion que recibe la categoria del hijo (AddCategory) y
-            luego la funcion addNewCategory lo procesa aqui, en el padre*/
+            This version is better, the addNewCategory() function is defined here and it receives the category from the child, so
+            the parent process it. The child only sends the new category
+            */
             onNewCategory = {(value) => addNewCategory(value)}
          />
 

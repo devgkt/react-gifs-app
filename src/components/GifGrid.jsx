@@ -2,12 +2,12 @@
 import { GifItem } from "../components/GifItem";
 import { useFetchGifs } from "../hooks/useFetchGifs";
 
+//Note: `key` is not a prop,  If you need to access the same value within the child component, you should pass it as a different prop.
 export const GifGrid = ({category}) => {
-
-    //Usando un custom hook, aqui como dicho hook devuelve un objeto, se desestructuta con {}
+    //Using custom Hook, which returns the object and is destructured with {}
     const  {images, isLoading} = useFetchGifs(category);
 
-/*  Este codigo se movió al hook personalizado useFetchGifs
+/*  Below  code was moved to personalized Hook useFetchGifs:
 
     const [images, setImages] = useState([]);
 
@@ -16,11 +16,11 @@ export const GifGrid = ({category}) => {
         setImages(newImages);
     }
 
-    //useEffect es para realizar efectos secundarios basado en ciertas condiciones
+    //useEffect  is used to perform side effects based on conditions or dependencies
     useEffect(() => {
       getImages();
     },
-    [] //arreglo de dependecnias, si se queda vacio significa que el hook se ejecutara solo la primera vez que construye el componente
+    [] //dependency array: if it is empty, the hook will be executed only the first time the component is built
     );
 */
 

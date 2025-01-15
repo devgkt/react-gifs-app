@@ -1,5 +1,6 @@
 import React from 'react'
 
+//This component received the Item Object and destructure it to get title and url
 export const GifItem = ({title, url}) => {
   return (
     <>

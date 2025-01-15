@@ -12,9 +12,9 @@ const getResultWithParams = (a,b) => {
 export const FirstApp = ({title = 'default value'}) =>{
 
     const myVar = 123;
-    const name = 'German Rodriguez';
+    const name = 'Sample Name';
     const msg = {
-        name: 'German',
+        name: 'Sample Name',
         age : 35,
         profile: 'dev'
     };
